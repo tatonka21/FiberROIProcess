@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<executable>
+  <category>
+  Diffusion.Tractography
+  </category>
+  <title>
+  FiberROIProcess
+  </title>
+  <description>
+FiberROIProcess allows a user to 1) select tracts passing or not passing through a single or multiple labels. 2) Trim fibers based on a mask file that the fibers should not pass. The label is defined as a labelmap and has to be provided by the user. 
+  </description>
+  <version>0.1.0.$Revision:  $(alpha)</version>
+  <documentation-url></documentation-url>
+  <license></license>
+  <contributor>Yundi Shi</contributor>
+  <acknowledgements>NIRAL, UNC</acknowledgements>
+
+  <parameters>
+    <label>IO</label>
+    <description>Input/output parameters</description>
+    <geometry type = "fiberbundle">
+      <name>InputFibers</name>
+      <label>Input Fiber Bundle</label>
+      <channel>input</channel>
+      <index>0</index>
+      <description>Input tractography</description>
+    </geometry>
+    <geometry type = "fiberbundle">
+      <name>OutputFibers</name>
+      <label>Output Fiber Bundle</label>
+      <channel>output</channel>
+      <index>1</index>
+      <description>Selected tractography result</description>
+    </geometry>
+  </parameters> 
+  
+  <parameters>
+  <label>Label map volumes</label>
+  <description>Label map volumes for selection and trimming of the fibers</description>
+    <image type ="label">
+      <name>Inclucsion_Label</name>
+      <label>Input Inclusion Label Map</label>
+      <flag>I</flag>
+      <longflag>InclusionLabel</longflag>
+      <description>Inclusion label map volume, meaning fiber HAS to pass the defined volume to be included</description>
+    </image>
+    <image type ="label">
+      <name>Exlucsion_Label</name>
+      <label>Input Exclusion Label Map</label>
+      <flag>X</flag>
+      <longflag>ExclusionLabel</longflag>
+      <description>Exclusion label map volume, meaning any fiber that passes the defined volume will be excluded</description>
+    </image>
+    <image type ="label">
+      <name>Stop_Mask</name>
+      <label>Mask to stop the fiberss</label>
+      <flag>S</flag>
+      <longflag>StopMask</longflag>
+      <description>Stop mask, meaning any PART OF THE FIBERS that passes the defined volume will be trimmed off</description>
+    </image>
+  </parameters>  
+</executable>
